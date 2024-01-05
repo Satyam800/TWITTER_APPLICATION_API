@@ -1,16 +1,18 @@
-const Hashtags = require('../models/hastags')
+import Hashtags from '../models/hastags.js'
 
 
 class HashRepository{
 
-    async create(){
-     try{
-
-     }
-     catch(err){
-                
-     }
-    }
+    async create(data){
+        try{
+          const tag= await Hashtags.create(data)
+          console.log(tag,"tagggs");
+          return tag
+        }
+        catch(err){
+             console.log(err);      
+        }
+       }
 
     async get(data){
 try{
@@ -24,6 +26,7 @@ try{
     async bulkCreate(data){
         try{
         const tags= await Hashtags.insertMany(data)
+        return tags
              }
              catch(err){
                 console.log(err)
@@ -39,12 +42,15 @@ try{
         }
     }
 
-    async getwithComment(){
+    async findByName(titleList){
         try{
-
+            const tags= await Hashtags.find({
+                title:titleList
+            })
+            return tags  
         }
         catch(err){
-                
+               console.log(err) 
         }
     }
 
@@ -59,4 +65,4 @@ try{
 
 }
 
-module.exports=HashRepository
+export default HashRepository
