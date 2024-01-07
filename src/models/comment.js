@@ -1,10 +1,10 @@
-import mongoose from "mongoose"
+import mongoose from 'mongoose'
 
-const commentSchema=new mongoose.Schema({
-    content:{
-        type:String
-    }
+const commentSchema = new mongoose.Schema({
+    content: {
+        type: String,
+    },
 })
 
-const comment= mongoose.model("Comment",commentSchema)
+const comment = mongoose.model('Comment', commentSchema)
 export default comment
