@@ -14,12 +14,12 @@ export const toggelLike = async (req, res) => {
             message: 'successfully toggeled like',
         })
     } catch (err) {
-        console.log(err)
+       
         res.status(500).json({
             success: false,
             data: {},
             message: 'Something went wrong',
-            err: error,
+            err: err,
         })
     }
 }
