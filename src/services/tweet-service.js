@@ -7,16 +7,16 @@ class TweetService {
 
     async create(data) {
         const content = data.content
-
+         console.log(content,"content");
         const withtags = content.match(/(#[A-Za-z]*)/g) //this regex extract the hashtags
 
-        const tags = withtags.map((tag) => tag.substring(1).toLowerCase())
+        const tags = withtags?.map((tag) => tag.substring(1).toLowerCase())
 
         const tweet = await this.TweetRepository.create(data)
 
         let alreadypresenttags = await this.HashRepository.findByName(tags)
-        alreadypresenttags = alreadypresenttags.map((tags) => {
-            console.log(tags, 'klk')
+        alreadypresenttags = alreadypresenttags?.map((tags) => {
+       
             return tags?.title
         })
 
@@ -24,7 +24,7 @@ class TweetService {
             console.log(!alreadypresenttags.includes(tag))
             return !alreadypresenttags.includes(tag)
         })
-        console.log(newTags, 'newTags')
+      
         newTags = newTags.map((tag) => {
             return {
                 title: tag,
@@ -32,7 +32,7 @@ class TweetService {
             }
         })
 
-        console.log(newTags, 'newtags')
+
 
         const response = await this.HashRepository.bulkCreate(newTags)
 
@@ -42,6 +42,13 @@ class TweetService {
         })
         return tweet
     }
+
+    async get(tweetId){
+        const tweet=await this.TweetRepository.getwithComment(tweetId)
+        return tweet
+    }
 }
 
 export default TweetService
+
+
