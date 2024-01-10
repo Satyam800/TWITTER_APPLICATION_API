@@ -5,11 +5,14 @@ class CrudRepository {
 
     async create(data) {
         try {
+           
+           
             const result = await this.model.create(data)
+            
             return result
         } catch (err) {
-            console.log('Something went wrong')
-            throw err
+            console.log('Something went wrong',err)
+         
         }
     }
 
@@ -28,11 +31,11 @@ class CrudRepository {
             const result = await this.model.findById(id)
             return result
         } catch (err) {
-            console.log('Something went wrong')
+            console.log('Something went wrongs')
             throw err
         }
     }
-    async getAll(id) {
+    async getAll() {
         try {
             const result = await this.model.find({})
             return result
@@ -49,7 +52,7 @@ class CrudRepository {
             }) // new:true because update return old document not updated one
             return result
         } catch (err) {
-            console.log('Something went wrong')
+            console.log('Something went wrongs')
             throw err
         }
     }

@@ -3,6 +3,7 @@ import { connect } from './config/database.js'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import apiRoutes from './routes/index.js'
+
 dotenv.config()
 const app = express()
 
@@ -16,4 +17,7 @@ connect()
 let PORT = 2500
 app.listen(PORT, async () => {
     console.log('server started', PORT)
+
+
+
 })
