@@ -3,10 +3,12 @@ import HashRepository from './hastags-repository.js'
 import LikeRepository from './like-repository.js'
 import CommentRepository from './comment-repository.js'
 import UserRepository from './user-repository.js'
+import historyRepository from './history-Repository.js'
 export {
      TweetRepository,
      HashRepository,
     LikeRepository,
     CommentRepository,
-    UserRepository
+    UserRepository,
+    historyRepository
      }
